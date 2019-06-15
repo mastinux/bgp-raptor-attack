@@ -36,6 +36,10 @@ Scaricare quagga-1.2.4 from [http://download.savannah.gnu.org/releases/quagga/](
 
 - `$ make`
 
+## Preparazione chutney
+
+- `$ git clone https://git.torproject.org/chutney.git`
+
 ---
 
 ## Esecuzione dell'attacco
