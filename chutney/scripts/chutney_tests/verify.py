@@ -62,6 +62,12 @@ def _verify_traffic(network):
     # now make the connections
     bind_to = (LISTEN_ADDR, LISTEN_PORT)
 
+    # mastinux
+    print("_verify_traffic ----------------------------------------------------------------")
+    print(LISTEN_ADDR)
+    print(LISTEN_PORT)
+    print("--------------------------------------------------------------------------------")
+
     tt = chutney.Traffic.TrafficTester(bind_to, tmpdata, TIMEOUT, reps,
                                        dot_reps)
     # _env does not implement get() due to its fallback to parent behaviour

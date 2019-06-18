@@ -142,7 +142,12 @@ def main():
 	os.system("rm -f /tmp/R*.log /tmp/h*.log /tmp/*R*.pid logs/*stdout")
 	os.system("mn -c >/dev/null 2>&1")
 	os.system("killall -9 zebra bgpd > /dev/null 2>&1")
+	os.system('pgrep torrc | xargs kill -9')
+	os.system('pgrep zebra | xargs kill -9')
+	os.system('pgrep bgpd | xargs kill -9')
+	os.system('pgrep -f torrc | xargs kill -9')
 	os.system('pgrep -f webserver.py | xargs kill -9')
+
 	os.system('reset')
 
 	init_quagga_state_dir()
@@ -192,65 +197,40 @@ def main():
 
 	# configuring tor on hosts
 	hostname = "h5-3"
-	#print hostname, getIP(hostname)
 	host = net.getNodeByName(hostname)
 	host.popen("tor/src/app/tor -f chutney/net/nodes/000authority/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
-	log2(hostname, 1, "cyan")
-	#host.popen("netstat -lnp > ~/merda5-3 2>&1", shell=True)
-	host.popen("ps aux | grep tor > ~/merdissima5-3 2>&1", shell=True)
 
 	hostname = "h2-2"
-	#print hostname, getIP(hostname)
 	host = net.getNodeByName(hostname)
 	host.popen("tor/src/app/tor -f chutney/net/nodes/001authority/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
-	log2(hostname, 1, "cyan")
-	#host.popen("netstat -lnp > ~/merda2-2 2>&1", shell=True)
-	host.popen("ps aux | grep tor > ~/merdissima2-2 2>&1", shell=True)
 
 	hostname = "h6-2"
-	#print hostname, getIP(hostname)
 	host = net.getNodeByName(hostname)
 	host.popen("tor/src/app/tor -f chutney/net/nodes/002exit/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
-	log2(hostname, 1, "cyan")
-	#host.popen("netstat -lnp > ~/merda6-2 2>&1", shell=True)
-	host.popen("ps aux | grep tor > ~/merdissima6-2 2>&1", shell=True)
-	#log2("relays", 15, "cyan")
 
 	hostname = "h1-1"
-	#print hostname, getIP(hostname)
 	host = net.getNodeByName(hostname)
 	host.popen("tor/src/app/tor -f chutney/net/nodes/003client/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
-	log2(hostname, 1, "cyan")
-	#host.popen("netstat -lnp > ~/merda1-1 2>&1", shell=True)
-	host.popen("ps aux | grep tor > ~/merdissima1-1 2>&1", shell=True)
-	#log2("clients", 10, "cyan")
 
-	"""
-	hostname = "h6-2"
+	log2("Tor topology convergence", 60, "cyan")
+
+	hostname = "h4-1"
 	host = net.getNodeByName(hostname)
-	host.popen("netstat -lnp >> ~/merda6-2 2>&1", shell=True)
-	hostname = "h2-2"
-	host = net.getNodeByName(hostname)
-	host.popen("netstat -lnp >> ~/merda2-2 2>&1", shell=True)
-	hostname = "h5-3"
-	host = net.getNodeByName(hostname)
-	host.popen("netstat -lnp >> ~/merda5-3 2>&1", shell=True)
+	host.popen("ifconfig > ~/merda.log 2>&1", shell=True)
+	host.popen("netstat -lnp >> ~/merda.log 2>&1", shell=True)
+
 	hostname = "h1-1"
 	host = net.getNodeByName(hostname)
-	host.popen("netstat -lnp >> ~/merda1-1 2>&1", shell=True)
-	"""
+	host.popen("wget -o ~/merdaccia -O ~/merdaccia.html 14.1.0.1", shell=True)
+	host.popen("torsocks wget -o ~/merdone -O ~/merdone.html 14.1.0.1", shell=True)
+	log2("h1-1 to perform torsocks wget against h4-1", 5, "cyan")
 
-	CLI(net)
-
-	#host.popen("wget -O - 14.1.0.1", shell=True)
-	#log2("h1-1 to perform wget on h4-1", 5, "cyan")
-
-	#log2("a consensus containing relays to be generated", 210, "cyan")
-
-	net.stop()
+	#CLI(net)
+	#net.stop()
 
 	os.system('pgrep zebra | xargs kill -9')
 	os.system('pgrep bgpd | xargs kill -9')
+	os.system('pgrep -f torrc | xargs kill -9')
 	os.system('pgrep -f webserver.py | xargs kill -9')
 
 	# resetting ownership
@@ -260,6 +240,7 @@ def main():
 	fltr = '(ip.addr == 11.1.0.1) or (ip.addr == 12.2.0.1) or (ip.addr == 14.1.0.1) or (ip.addr == 15.3.0.1) or (ip.addr == 16.2.0.1)'
 	#os.system('sudo wireshark /tmp/R1-eth4.pcap -Y \'%s\' &' % fltr)
 	#os.system('sudo wireshark /tmp/R1-eth5.pcap -Y \'%s\' &' % fltr)
+	os.system("gedit ~/merda.log ~/merdone ~/merdone.html ~/merdaccia ~/merdaccia.html")
 
 
 if __name__ == "__main__":

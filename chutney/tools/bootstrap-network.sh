@@ -71,6 +71,7 @@ echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> con
 # mastinux
 if [ "$MASTINUX_CONFIG" -eq 1 ]; then
     sed -i 's/__OwningControllerProcess/# __OwningControllerProcess/g' net/nodes/*/torrc
+
 	exit 77
 fi
 
