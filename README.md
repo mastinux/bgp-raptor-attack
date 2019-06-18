@@ -10,6 +10,8 @@ Per accedere:
 
 ## Preparazione mininet
 
+- `$ cd ~`
+
 - `$ git clone https://github.com/mininet/mininet`
 
 - `$ cd mininet`
@@ -35,10 +37,6 @@ Scaricare quagga-1.2.4 from [http://download.savannah.gnu.org/releases/quagga/](
 - `$ ./configure --enable-user=mininet --enable-group=mininet`
 
 - `$ make`
-
-## Preparazione chutney
-
-- `$ git clone https://git.torproject.org/chutney.git`
 
 ---
 

@@ -160,6 +160,10 @@ def main():
 		router.cmd("sysctl -w net.ipv4.ip_forward=1")
 		router.waitOutput()
 
+		if router.name == "R1":
+			router.cmd("tcpdump -i R1-eth4 -w /tmp/R1-eth4.pcap not arp > /tmp/tcpdump-R2-eth4.out 2> /tmp/tcpdump-R2-eth4.err &", shell=True)
+			router.cmd("tcpdump -i R1-eth5 -w /tmp/R1-eth5.pcap not arp > /tmp/tcpdump-R2-eth5.out 2> /tmp/tcpdump-R2-eth5.err &", shell=True)
+
 	log2("sysctl changes to take effect", args.sleep, "cyan")
 
 	for router in net.switches:
@@ -171,21 +175,49 @@ def main():
 
 		log("Starting zebra and bgpd on %s" % router.name)
 	
-	# configuring hosts
+	# configuring IP and default gateway on hosts
 	for host in net.hosts:
 		host.cmd("ifconfig %s-eth0 %s" % (host.name, getIP(host.name)))
 		host.cmd("route add default gw %s" % (getGateway(host.name)))
 
+	# starting web servers
 	for i in xrange(NUM_ASES):
 		log("Starting web servers", 'yellow')
 		startWebserver(net, 'h%s-1' % (i+1), "Web server home page")
+	
+	# setting ownership
+	os.system("chown -R root:root chutney/net/nodes/")
+
+	# configuring tor on hosts
+	hostname = "h5-3"
+	host = net.getNodeByName(hostname)
+	host.popen("tor/src/app/tor -f chutney/net/nodes/000authority/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
+
+	hostname = "h2-2"
+	host = net.getNodeByName(hostname)
+	host.popen("tor/src/app/tor -f chutney/net/nodes/001guard/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
+
+	hostname = "h6-2"
+	host = net.getNodeByName(hostname)
+	host.popen("tor/src/app/tor -f chutney/net/nodes/002exit/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
+
+	hostname = "h1-1"
+	host = net.getNodeByName(hostname)
+	host.popen("tor/src/app/tor -f chutney/net/nodes/003client/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
 
 	CLI(net)
+
+	host.popen("wget -O - 14.1.0.1", shell=True)
+	log2("h1-1 to perform wget on h4-1", 5, "cyan")
+
 	net.stop()
 
 	os.system('pgrep zebra | xargs kill -9')
 	os.system('pgrep bgpd | xargs kill -9')
 	os.system('pgrep -f webserver.py | xargs kill -9')
+
+	# resetting ownership
+	os.system("chown -R mininet:mininet chutney/net/nodes/")
 
 if __name__ == "__main__":
 	main()
