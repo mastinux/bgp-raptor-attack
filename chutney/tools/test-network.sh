@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# mastinux
+#MASTINUX_CONFIG=${MASTINUX_CONFIG:-0}
+#echo "MASTINUX_CONFIG $MASTINUX_CONFIG"
+export MASTINUX_CONFIG=${MASTINUX_CONFIG:-0}
+
 export ECHO="${ECHO:-echo}"
 
 # Output is prefixed with the name of the script

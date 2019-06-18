@@ -1,9 +1,12 @@
 # By default, Authorities are not configured as exits
 Authority = Node(tag="authority", authority=1, relay=1, torrc="authority.tmpl")
-NonExitRelay = Node(tag="guard", relay=1, torrc="relay-non-exit.tmpl")
 ExitRelay = Node(tag="exit", relay=1, exit=1, torrc="relay.tmpl")
 Client = Node(tag="client", client=1, torrc="client.tmpl")
 
-NODES = Authority.getN(1) + NonExitRelay.getN(1) + ExitRelay.getN(1) + Client.getN(1)
+# Since only 25% of relays get the guard flag,
+# TestingDirAuthVoteGuard * may need to be used in small networks
+
+# The minimum number of authorities/relays/exits is 3, the minimum path length
+NODES = Authority.getN(2) + ExitRelay.getN(1) + Client.getN(1)
 
 ConfigureNodes(NODES)

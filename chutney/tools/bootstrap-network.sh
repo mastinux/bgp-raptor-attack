@@ -59,19 +59,27 @@ if ! "$CHUTNEY" supported "$CHUTNEY_NETWORK"; then
     exit 77
 fi
 
+#cp net/nodes/000authority/torrc torrc-after-1-supported
+
 echo "$myname: bootstrapping network: $NETWORK_FLAVOUR"
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> configure"
 # configure crea i torrc
 "$CHUTNEY" configure "$CHUTNEY_NETWORK"
 
+#cp net/nodes/000authority/torrc torrc-after-2-configure
+
 # mastinux
 if [ "$MASTINUX_CONFIG" -eq 1 ]; then
+    sed -i 's/__OwningControllerProcess/# __OwningControllerProcess/g' net/nodes/*/torrc
 	exit 77
 fi
 
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start 1"
 "$CHUTNEY" start "$CHUTNEY_NETWORK"
 sleep 3
+
+#cp net/nodes/000authority/torrc torrc-after-3-start
+
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> status 1"
 if ! "$CHUTNEY" status "$CHUTNEY_NETWORK"; then
     # Try to work out why the start or status command is failing

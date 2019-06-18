@@ -1,0 +1,50 @@
+Jun 18 09:05:50.670 [notice] Tor 0.4.2.0-alpha-dev (git-319ce225815897d8) opening new log file.
+Jun 18 09:05:50.639 [notice] Tor 0.4.2.0-alpha-dev (git-319ce225815897d8) running on Linux with Libevent 2.0.21-stable, OpenSSL 1.0.1f, Zlib 1.2.8, Liblzma N/A, and Libzstd N/A.
+Jun 18 09:05:50.639 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning
+Jun 18 09:05:50.639 [notice] This version is not a stable Tor release. Expect more bugs than usual.
+Jun 18 09:05:50.639 [notice] Read configuration file "/home/mininet/mastinux-routing-attacks/bgp-raptor-attack/chutney/net/nodes/003client/torrc".
+Jun 18 09:05:50.661 [warn] You have used DirAuthority or AlternateDirAuthority to specify alternate directory authorities in your configuration. This is potentially dangerous: it can make you look different from all other Tor users, and hurt your anonymity. Even if you've specified the same authorities as Tor uses by default, the defaults could change in the future. Be sure you know what you're doing.
+Jun 18 09:05:50.661 [warn] TestingTorNetwork is set. This will make your node almost unusable in the public Tor network, and is therefore only advised if you are building a testing Tor network!
+Jun 18 09:05:50.670 [notice] Opening Socks listener on 127.0.0.1:9003
+Jun 18 09:05:50.670 [notice] Opened Socks listener on 127.0.0.1:9003
+Jun 18 09:05:50.670 [notice] Opening Control listener on 127.0.0.1:8003
+Jun 18 09:05:50.670 [notice] Opened Control listener on 127.0.0.1:8003
+Jun 18 09:05:50.670 [notice] Opening Control listener on /home/mininet/mastinux-routing-attacks/bgp-raptor-attack/chutney/net/nodes/003client/control
+Jun 18 09:05:50.670 [notice] Opened Control listener on /home/mininet/mastinux-routing-attacks/bgp-raptor-attack/chutney/net/nodes/003client/control
+Jun 18 09:05:50.671 [warn] Your log may contain sensitive information - you disabled SafeLogging, and you're logging more than "notice". Don't log unless it serves an important reason. Overwrite the log afterwards.
+Jun 18 09:05:50.671 [notice] Not disabling debugger attaching for unprivileged users.
+Jun 18 09:05:50.671 [warn] This version of Tor was built without support for sandboxing. To build with support for sandboxing on Linux, you must have libseccomp and its necessary header files (e.g. seccomp.h).
+Jun 18 09:05:50.775 [notice] Bootstrapped 0% (starting): Starting
+Jun 18 09:05:50.778 [notice] Starting with guard context "default"
+Jun 18 09:05:51.782 [notice] Bootstrapped 5% (conn): Connecting to a relay
+Jun 18 09:05:51.782 [notice] Bootstrapped 10% (conn_done): Connected to a relay
+Jun 18 09:05:51.791 [notice] Bootstrapped 14% (handshake): Handshaking with a relay
+Jun 18 09:05:51.794 [notice] Bootstrapped 15% (handshake_done): Handshake with a relay done
+Jun 18 09:05:51.794 [notice] Bootstrapped 20% (onehop_create): Establishing an encrypted directory connection
+Jun 18 09:05:51.794 [notice] Bootstrapped 25% (requesting_status): Asking for networkstatus consensus
+Jun 18 09:05:51.805 [notice] Bootstrapped 30% (loading_status): Loading networkstatus consensus
+Jun 18 09:05:51.845 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:5001' while fetching consensus directory.
+Jun 18 09:05:52.842 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:5000' while fetching consensus directory.
+Jun 18 09:05:53.830 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:5001' while fetching consensus directory.
+Jun 18 09:05:54.834 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:5000' while fetching consensus directory.
+Jun 18 09:05:56.839 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:5000' while fetching consensus directory.
+Jun 18 09:05:59.842 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:5001' while fetching consensus directory.
+Jun 18 09:06:04.848 [notice] I learned some more directory information, but not enough to build a circuit: We have no usable consensus.
+Jun 18 09:06:04.850 [notice] Bootstrapped 40% (loading_keys): Loading authority key certs
+Jun 18 09:06:04.891 [notice] The current consensus has no exit nodes. Tor can only build internal paths, such as paths to onion services.
+Jun 18 09:06:04.891 [notice] Bootstrapped 45% (requesting_descriptors): Asking for relay descriptors
+Jun 18 09:06:04.891 [notice] I learned some more directory information, but not enough to build a circuit: We need more microdescriptors: we have 0/3, and can only build 0% of likely paths. (We have 0% of guards bw, 0% of midpoint bw, and 0% of end bw (no exits in consensus, using mid) = 0% of path bw.)
+Jun 18 09:06:04.893 [notice] Bootstrapped 50% (loading_descriptors): Loading relay descriptors
+Jun 18 09:06:04.907 [notice] The current consensus contains exit nodes. Tor can build exit and internal paths.
+Jun 18 09:06:04.907 [notice] Bootstrapped 75% (enough_dirinfo): Loaded enough directory info to build circuits
+Jun 18 09:06:05.799 [notice] Bootstrapped 80% (ap_conn): Connecting to a relay to build circuits
+Jun 18 09:06:05.799 [notice] Bootstrapped 85% (ap_conn_done): Connected to a relay to build circuits
+Jun 18 09:06:05.807 [notice] Bootstrapped 89% (ap_handshake): Finishing handshake with a relay to build circuits
+Jun 18 09:06:05.808 [notice] Bootstrapped 90% (ap_handshake_done): Handshake finished with a relay to build circuits
+Jun 18 09:06:05.808 [notice] Bootstrapped 95% (circuit_create): Establishing a Tor circuit
+Jun 18 09:06:05.850 [notice] Bootstrapped 100% (done): Done
+Jun 18 11:08:27.546 [notice] Your system clock just jumped 7236 seconds forward; assuming established circuits no longer work.
+Jun 18 09:07:54.497 [notice] Your system clock just jumped 7234 seconds backward; assuming established circuits no longer work.
+Jun 18 09:07:55.501 [notice] Heartbeat: Tor's uptime is 0:02 hours, with 3 circuits open. I've sent 57 kB and received 82 kB.
+Jun 18 09:07:55.501 [notice] Average packaged cell fullness: 41.325%. TLS write overhead: 8%
+Jun 18 09:07:56.136 [notice] Interrupt: exiting cleanly.

@@ -150,12 +150,14 @@ def run_tor(cmdline, exit_on_missing=True):
         cmdline.append("--quiet")
     try:
         # mastinux
+        """
         if cmdline.count('--version') == 0 and cmdline.count('--list-torrc-options') == 0 and cmdline.count('--list-modules') == 0:
             c = " ".join(cmdline)
             print ("\nrun_tor ------------------------------------------------------------------------")
             print (c)
             print ("--------------------------------------------------------------------------------\n")
             os.system("echo %s >> ~/tor-topology-commands.txt" % c)
+        """
 
         stdouterr = subprocess.check_output(cmdline,
                                             stderr=subprocess.STDOUT,
@@ -197,12 +199,14 @@ def launch_process(cmdline, tor_name="tor", stdin=None, exit_on_missing=True):
         cmdline.append("-v")
     try:
         # mastinux
+        """
         if cmdline.count('--help') == 0:
             c = " ".join(cmdline)
             print ("\nlaunch_process -----------------------------------------------------------------")
             print (c)
             print ("--------------------------------------------------------------------------------\n")
             os.system("echo %s >> ~/tor-topology-commands.txt" % c)
+        """
 
         p = subprocess.Popen(cmdline,
                              stdin=stdin,
@@ -546,22 +550,18 @@ class LocalNodeBuilder(NodeBuilder):
             #print ("\n_createTorrcFile ---------------------------------------------------------------")
             #print (self._getTorrcFname())
             if self._env['orport'] == 5000:
-	    		# authority
                 #print("converting authority °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°")
                 self._env['ip'] = '15.3.0.1'
 
             if self._env['orport'] == 5001:
-	    		# authority
-                #print("converting guard °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°")
+                #print("converting authority °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°")
                 self._env['ip'] = '12.2.0.1'
 
             if self._env['orport'] == 5002:
-	    		# authority
                 #print("converting exit °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°")
                 self._env['ip'] = '16.2.0.1'
 
             if self._env['orport'] == 5003:
-	    		# authority
                 #print("converting client °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°")
                 self._env['ip'] = '11.1.0.1'
             #print ("--------------------------------------------------------------------------------")
@@ -1442,6 +1442,8 @@ class Network(object):
         return all([n.getController().hup() for n in self._nodes])
 
     def wait_for_bootstrap(self):
+        # mastinux
+
         print("Waiting for nodes to bootstrap...")
         limit = getenv_int("CHUTNEY_START_TIME", 60)
         delay = 0.5
@@ -1610,7 +1612,7 @@ def main():
 
     # mastinux
     #print("main ---------------------------------------------------------------------------")
-    #print("args", args)
+    #print(args['action'])
     #print("--------------------------------------------------------------------------------")
 
     f = open(args['network_cfg'])

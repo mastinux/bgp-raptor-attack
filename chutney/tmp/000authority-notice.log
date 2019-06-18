@@ -1,0 +1,525 @@
+Jun 18 09:05:50.569 [notice] Tor 0.4.2.0-alpha-dev (git-319ce225815897d8) opening new log file.
+Jun 18 09:05:50.561 [notice] Tor 0.4.2.0-alpha-dev (git-319ce225815897d8) running on Linux with Libevent 2.0.21-stable, OpenSSL 1.0.1f, Zlib 1.2.8, Liblzma N/A, and Libzstd N/A.
+Jun 18 09:05:50.561 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning
+Jun 18 09:05:50.561 [notice] This version is not a stable Tor release. Expect more bugs than usual.
+Jun 18 09:05:50.561 [notice] Read configuration file "/home/mininet/mastinux-routing-attacks/bgp-raptor-attack/chutney/net/nodes/000authority/torrc".
+Jun 18 09:05:50.568 [notice] Based on detected system memory, MaxMemInQueues is set to 2578 MB. You can override this by setting MaxMemInQueues by hand.
+Jun 18 09:05:50.568 [warn] You have used DirAuthority or AlternateDirAuthority to specify alternate directory authorities in your configuration. This is potentially dangerous: it can make you look different from all other Tor users, and hurt your anonymity. Even if you've specified the same authorities as Tor uses by default, the defaults could change in the future. Be sure you know what you're doing.
+Jun 18 09:05:50.568 [warn] V3AuthVotingInterval is very low. This may lead to failure to synchronise for a consensus.
+Jun 18 09:05:50.568 [warn] TestingTorNetwork is set. This will make your node almost unusable in the public Tor network, and is therefore only advised if you are building a testing Tor network!
+Jun 18 09:05:50.568 [notice] Opening Control listener on 127.0.0.1:8000
+Jun 18 09:05:50.569 [notice] Opened Control listener on 127.0.0.1:8000
+Jun 18 09:05:50.569 [notice] Opening Control listener on /home/mininet/mastinux-routing-attacks/bgp-raptor-attack/chutney/net/nodes/000authority/control
+Jun 18 09:05:50.569 [notice] Opened Control listener on /home/mininet/mastinux-routing-attacks/bgp-raptor-attack/chutney/net/nodes/000authority/control
+Jun 18 09:05:50.569 [notice] Opening OR listener on 0.0.0.0:5000
+Jun 18 09:05:50.569 [notice] Opened OR listener on 0.0.0.0:5000
+Jun 18 09:05:50.569 [notice] Opening Directory listener on 0.0.0.0:7000
+Jun 18 09:05:50.569 [notice] Opened Directory listener on 0.0.0.0:7000
+Jun 18 09:05:50.569 [warn] Your log may contain sensitive information - you disabled SafeLogging, and you're logging more than "notice". Don't log unless it serves an important reason. Overwrite the log afterwards.
+Jun 18 09:05:50.569 [notice] Not disabling debugger attaching for unprivileged users.
+Jun 18 09:05:50.934 [notice] Your Tor server's identity key fingerprint is 'test000authority 40ABF58221A5CF57DD49EF4BB3674ED5E9007D80'
+Jun 18 09:05:50.934 [warn] Cannot open fingerprint file '/home/mininet/mastinux-routing-attacks/bgp-raptor-attack/chutney/net/nodes/000authority/approved-routers'. That's ok.
+Jun 18 09:05:50.934 [notice] Configured to measure directory request statistics, but no GeoIP database found. Please specify a GeoIP database using the GeoIPFile option.
+Jun 18 09:05:50.935 [warn] This version of Tor was built without support for sandboxing. To build with support for sandboxing on Linux, you must have libseccomp and its necessary header files (e.g. seccomp.h).
+Jun 18 09:05:50.935 [notice] Bootstrapped 0% (starting): Starting
+Jun 18 09:05:50.943 [notice] Starting with guard context "default"
+Jun 18 09:05:50.944 [warn] Could not open "/home/mininet/mastinux-routing-attacks/bgp-raptor-attack/chutney/net/nodes/000authority/sr-state": No such file or directory
+Jun 18 09:05:50.944 [warn] SR: Unable to read SR state file "/home/mininet/mastinux-routing-attacks/bgp-raptor-attack/chutney/net/nodes/000authority/sr-state"
+Jun 18 09:05:50.944 [warn] Could not read your DNS config from '/dev/null' - please investigate your DNS configuration. This is possibly a problem. Meanwhile, falling back to local DNS at 127.0.0.1.
+Jun 18 09:05:51.951 [notice] Scheduling voting.  Known authority IDs are 12CAD985D805AE4FBA0CF10525B61D070F104890, B3E981F3D572F8B1D53F6FB807E66EC58C7276C1. Mine is 12CAD985D805AE4FBA0CF10525B61D070F104890.
+Jun 18 09:05:51.955 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:7001' while fetching consensus directory.
+Jun 18 09:05:51.956 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:7001' while fetching consensus directory.
+Jun 18 09:05:52.792 [notice] Self-testing indicates your ORPort is reachable from the outside. Excellent. Publishing server descriptor.
+Jun 18 09:05:52.951 [notice] Time to vote.
+Jun 18 09:05:52.952 [notice] Choosing valid-after time in vote as 2019-06-18 16:06:00: consensus_set=0, last_interval=20
+Jun 18 09:05:52.959 [notice] Vote posted.
+Jun 18 09:05:52.961 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:7001' while fetching consensus directory.
+Jun 18 09:05:52.962 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:7001' while fetching consensus directory.
+Jun 18 09:05:52.962 [notice] Uploaded a vote to dirserver 127.0.0.1:7001
+Jun 18 09:05:54.947 [notice] Time to fetch any votes that we're missing.
+Jun 18 09:05:54.949 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:7001' while fetching consensus directory.
+Jun 18 09:05:55.950 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:7001' while fetching consensus directory.
+Jun 18 09:05:56.026 [notice] Got a signature from 127.0.0.1. Queuing it for the next consensus.
+Jun 18 09:05:56.948 [notice] Time to compute a consensus.
+Jun 18 09:05:56.950 [notice] Computed bandwidth weights for Case 2b1 (Wgg=weight_scale, Wmd=Wgd) with v10: G=1 M=1 E=1 D=1 T=4
+Jun 18 09:05:56.954 [notice] Bandwidth-weight Case 1 is verified and valid.
+Jun 18 09:05:56.954 [notice] Computed bandwidth weights for Case 2b1 (Wgg=weight_scale, Wmd=Wgd) with v10: G=1 M=1 E=1 D=1 T=4
+Jun 18 09:05:56.958 [notice] Bandwidth-weight Case 1 is verified and valid.
+Jun 18 09:05:56.959 [notice] Added a signature for test001authority from pending.
+Jun 18 09:05:56.959 [notice] Added 2 pending signatures while building consensus.
+Jun 18 09:05:56.959 [notice] Consensus computed; uploading signature(s)
+Jun 18 09:05:56.960 [notice] Signature(s) posted.
+Jun 18 09:05:56.961 [notice] Uploaded signature(s) to dirserver 127.0.0.1:7001
+Jun 18 09:05:56.961 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:7001' while fetching consensus directory.
+Jun 18 09:05:58.950 [notice] Time to fetch any signatures that we're missing.
+Jun 18 09:05:58.967 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:7001' while fetching consensus directory.
+Jun 18 09:05:59.968 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:7001' while fetching consensus directory.
+Jun 18 09:06:00.952 [notice] Time to publish the consensus and discard old votes
+Jun 18 09:06:00.953 [notice] Published ns consensus
+Jun 18 09:06:00.955 [notice] Published microdesc consensus
+Jun 18 09:06:00.971 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:00.971 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:00.971 [warn] Failed to find node for hop #1 of our path. Discarding this circuit.
+Jun 18 09:06:00.971 [notice] Our circuit 0 (id: 1) died due to an invalid selected path, purpose General-purpose client. This may be a torrc configuration issue, or a bug.
+Jun 18 09:06:01.972 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:01.972 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:01.972 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:02.973 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:02.973 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:02.973 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:03.975 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:03.975 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:03.975 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:04.975 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:04.975 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:04.975 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:05.977 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:05.977 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:05.977 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:06.978 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:06.978 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:06.978 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:07.979 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:07.979 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:07.979 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:08.980 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:08.980 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:08.980 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:09.981 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:09.981 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:09.981 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:10.982 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:10.982 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:10.982 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:11.983 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:11.983 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:11.983 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:12.954 [notice] Time to vote.
+Jun 18 09:06:12.956 [notice] Choosing valid-after time in vote as 2019-06-18 16:06:20: consensus_set=1, last_interval=20
+Jun 18 09:06:12.961 [notice] Vote posted.
+Jun 18 09:06:12.962 [notice] Uploaded a vote to dirserver 127.0.0.1:7001
+Jun 18 09:06:12.984 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:12.984 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:12.984 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:13.985 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:13.986 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:13.986 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:14.956 [notice] Time to fetch any votes that we're missing.
+Jun 18 09:06:14.987 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:14.987 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:14.987 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:15.988 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:15.988 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:15.988 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:16.035 [notice] Got a signature from 127.0.0.1. Queuing it for the next consensus.
+Jun 18 09:06:16.957 [notice] Time to compute a consensus.
+Jun 18 09:06:16.959 [notice] Computed bandwidth weights for Case 2b1 (Wgg=weight_scale, Wmd=Wgd) with v10: G=1 M=1 E=1 D=1 T=4
+Jun 18 09:06:16.964 [notice] Bandwidth-weight Case 1 is verified and valid.
+Jun 18 09:06:16.965 [notice] Computed bandwidth weights for Case 2b1 (Wgg=weight_scale, Wmd=Wgd) with v10: G=1 M=1 E=1 D=1 T=4
+Jun 18 09:06:16.970 [notice] Bandwidth-weight Case 1 is verified and valid.
+Jun 18 09:06:16.971 [notice] Added a signature for test001authority from pending.
+Jun 18 09:06:16.971 [notice] Added 2 pending signatures while building consensus.
+Jun 18 09:06:16.971 [notice] Consensus computed; uploading signature(s)
+Jun 18 09:06:16.971 [notice] Signature(s) posted.
+Jun 18 09:06:16.972 [notice] Uploaded signature(s) to dirserver 127.0.0.1:7001
+Jun 18 09:06:16.996 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:16.996 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:16.996 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:18.009 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:18.009 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:18.009 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:18.959 [notice] Time to fetch any signatures that we're missing.
+Jun 18 09:06:19.010 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:19.010 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:19.010 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:20.013 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:20.013 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:20.013 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:20.960 [notice] Time to publish the consensus and discard old votes
+Jun 18 09:06:20.962 [notice] Published ns consensus
+Jun 18 09:06:20.964 [notice] Published microdesc consensus
+Jun 18 09:06:21.013 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:21.013 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:21.013 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:22.014 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:22.014 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:22.014 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:23.016 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:23.016 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:23.016 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:24.018 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:24.018 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:24.018 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:25.019 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:25.019 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:25.019 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:26.020 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:26.020 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:26.020 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:27.021 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:27.021 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:27.021 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:28.023 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:28.023 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:28.023 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:29.024 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:29.025 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:29.025 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:30.026 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:30.026 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:30.026 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:31.028 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:31.028 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:31.028 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:32.032 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:32.032 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:32.032 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:32.962 [notice] Time to vote.
+Jun 18 09:06:32.963 [notice] Choosing valid-after time in vote as 2019-06-18 16:06:40: consensus_set=1, last_interval=20
+Jun 18 09:06:32.969 [notice] Vote posted.
+Jun 18 09:06:32.970 [notice] Uploaded a vote to dirserver 127.0.0.1:7001
+Jun 18 09:06:33.034 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:33.034 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:33.034 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:34.035 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:34.035 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:34.035 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:34.963 [notice] Time to fetch any votes that we're missing.
+Jun 18 09:06:35.036 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:35.036 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:35.036 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:36.037 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:36.037 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:36.037 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:36.046 [notice] Got a signature from 127.0.0.1. Queuing it for the next consensus.
+Jun 18 09:06:36.965 [notice] Time to compute a consensus.
+Jun 18 09:06:36.967 [notice] Computed bandwidth weights for Case 2b1 (Wgg=weight_scale, Wmd=Wgd) with v10: G=1 M=1 E=1 D=1 T=4
+Jun 18 09:06:36.971 [notice] Bandwidth-weight Case 1 is verified and valid.
+Jun 18 09:06:36.972 [notice] Computed bandwidth weights for Case 2b1 (Wgg=weight_scale, Wmd=Wgd) with v10: G=1 M=1 E=1 D=1 T=4
+Jun 18 09:06:36.976 [notice] Bandwidth-weight Case 1 is verified and valid.
+Jun 18 09:06:36.977 [notice] Added a signature for test001authority from pending.
+Jun 18 09:06:36.978 [notice] Added 2 pending signatures while building consensus.
+Jun 18 09:06:36.978 [notice] Consensus computed; uploading signature(s)
+Jun 18 09:06:36.978 [notice] Signature(s) posted.
+Jun 18 09:06:36.980 [notice] Uploaded signature(s) to dirserver 127.0.0.1:7001
+Jun 18 09:06:37.037 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:37.038 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:37.038 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:38.039 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:38.039 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:38.039 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:38.967 [notice] Time to fetch any signatures that we're missing.
+Jun 18 09:06:39.040 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:39.040 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:39.041 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:40.042 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:40.042 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:40.042 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:40.968 [notice] Time to publish the consensus and discard old votes
+Jun 18 09:06:40.971 [notice] Published ns consensus
+Jun 18 09:06:40.973 [notice] Published microdesc consensus
+Jun 18 09:06:41.046 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:41.046 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:41.046 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:42.047 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:42.047 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:42.047 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:43.048 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:43.048 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:43.048 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:44.050 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:44.050 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:44.050 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:45.052 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:45.052 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:45.052 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:46.052 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:46.052 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:46.052 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:47.053 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:47.053 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:47.053 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:48.055 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:48.055 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:48.055 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:49.057 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:49.057 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:49.057 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:50.058 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:50.058 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:50.058 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:51.059 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:51.059 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:51.059 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:52.061 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:52.062 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:52.062 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:52.977 [notice] Time to vote.
+Jun 18 09:06:52.977 [notice] Choosing valid-after time in vote as 2019-06-18 16:07:00: consensus_set=1, last_interval=20
+Jun 18 09:06:52.983 [notice] Vote posted.
+Jun 18 09:06:52.985 [notice] Uploaded a vote to dirserver 127.0.0.1:7001
+Jun 18 09:06:53.067 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:53.067 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:53.067 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:54.068 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:54.068 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:54.068 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:54.977 [notice] Time to fetch any votes that we're missing.
+Jun 18 09:06:55.069 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:55.069 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:55.069 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:56.062 [notice] Got a signature from 127.0.0.1. Queuing it for the next consensus.
+Jun 18 09:06:56.070 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:56.070 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:56.070 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:56.979 [notice] Time to compute a consensus.
+Jun 18 09:06:56.980 [notice] Computed bandwidth weights for Case 2b1 (Wgg=weight_scale, Wmd=Wgd) with v10: G=1 M=1 E=1 D=1 T=4
+Jun 18 09:06:56.983 [notice] Bandwidth-weight Case 1 is verified and valid.
+Jun 18 09:06:56.984 [notice] Computed bandwidth weights for Case 2b1 (Wgg=weight_scale, Wmd=Wgd) with v10: G=1 M=1 E=1 D=1 T=4
+Jun 18 09:06:56.987 [notice] Bandwidth-weight Case 1 is verified and valid.
+Jun 18 09:06:56.987 [notice] Added a signature for test001authority from pending.
+Jun 18 09:06:56.987 [notice] Added 2 pending signatures while building consensus.
+Jun 18 09:06:56.987 [notice] Consensus computed; uploading signature(s)
+Jun 18 09:06:56.988 [notice] Signature(s) posted.
+Jun 18 09:06:56.989 [notice] Uploaded signature(s) to dirserver 127.0.0.1:7001
+Jun 18 09:06:57.071 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:57.071 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:57.071 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:58.071 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:58.071 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:58.071 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:06:58.979 [notice] Time to fetch any signatures that we're missing.
+Jun 18 09:06:59.072 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:59.072 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:06:59.072 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:00.073 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:00.073 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:00.073 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:00.980 [notice] Time to publish the consensus and discard old votes
+Jun 18 09:07:00.982 [notice] Published ns consensus
+Jun 18 09:07:00.983 [notice] Published microdesc consensus
+Jun 18 09:07:01.076 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:01.076 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:01.076 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:02.081 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:02.081 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:02.081 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:03.082 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:03.082 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:03.082 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:04.084 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:04.084 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:04.084 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:05.086 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:05.086 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:05.086 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:06.087 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:06.087 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:06.087 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:07.089 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:07.089 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:07.089 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:08.091 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:08.091 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:08.091 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:09.092 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:09.092 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:09.092 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:10.093 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:10.093 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:10.093 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:11.095 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:11.095 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:11.095 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:12.096 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:12.096 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:12.096 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:12.985 [notice] Time to vote.
+Jun 18 09:07:12.986 [notice] Choosing valid-after time in vote as 2019-06-18 16:07:20: consensus_set=1, last_interval=20
+Jun 18 09:07:12.990 [notice] Vote posted.
+Jun 18 09:07:12.991 [notice] Uploaded a vote to dirserver 127.0.0.1:7001
+Jun 18 09:07:13.097 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:13.097 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:13.097 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:14.098 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:14.098 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:14.098 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:14.987 [notice] Time to fetch any votes that we're missing.
+Jun 18 09:07:15.098 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:15.098 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:15.098 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:16.069 [notice] Got a signature from 127.0.0.1. Queuing it for the next consensus.
+Jun 18 09:07:16.099 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:16.099 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:16.099 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:16.988 [notice] Time to compute a consensus.
+Jun 18 09:07:16.989 [notice] Computed bandwidth weights for Case 2b1 (Wgg=weight_scale, Wmd=Wgd) with v10: G=1 M=1 E=1 D=1 T=4
+Jun 18 09:07:16.991 [notice] Bandwidth-weight Case 1 is verified and valid.
+Jun 18 09:07:16.992 [notice] Computed bandwidth weights for Case 2b1 (Wgg=weight_scale, Wmd=Wgd) with v10: G=1 M=1 E=1 D=1 T=4
+Jun 18 09:07:16.994 [notice] Bandwidth-weight Case 1 is verified and valid.
+Jun 18 09:07:16.995 [notice] Added a signature for test001authority from pending.
+Jun 18 09:07:16.995 [notice] Added 2 pending signatures while building consensus.
+Jun 18 09:07:16.995 [notice] Consensus computed; uploading signature(s)
+Jun 18 09:07:16.995 [notice] Signature(s) posted.
+Jun 18 09:07:16.996 [notice] Uploaded signature(s) to dirserver 127.0.0.1:7001
+Jun 18 09:07:17.100 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:17.100 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:17.100 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:18.102 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:18.102 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:18.102 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:18.989 [notice] Time to fetch any signatures that we're missing.
+Jun 18 09:07:19.104 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:19.104 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:19.104 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:20.111 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:20.111 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:20.111 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:20.990 [notice] Time to publish the consensus and discard old votes
+Jun 18 09:07:20.992 [notice] Published ns consensus
+Jun 18 09:07:20.994 [notice] Published microdesc consensus
+Jun 18 09:07:21.114 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:21.114 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:21.114 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:22.114 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:22.114 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:22.114 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:23.118 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:23.118 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:23.118 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:24.121 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:24.121 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:24.121 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:25.121 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:25.121 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:25.121 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:26.123 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:26.123 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:26.123 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:27.128 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:27.128 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:27.128 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:28.138 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:28.138 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:28.138 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:29.140 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:29.140 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:29.140 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:30.148 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:30.148 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:30.148 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:31.183 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:31.183 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:31.183 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:32.238 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:32.238 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:32.238 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:32.993 [notice] Time to vote.
+Jun 18 09:07:32.994 [notice] Choosing valid-after time in vote as 2019-06-18 16:07:40: consensus_set=1, last_interval=20
+Jun 18 09:07:33.000 [notice] Vote posted.
+Jun 18 09:07:33.001 [notice] Uploaded a vote to dirserver 127.0.0.1:7001
+Jun 18 09:07:33.301 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:33.301 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:33.301 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:34.326 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:34.327 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:34.327 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:35.040 [notice] Time to fetch any votes that we're missing.
+Jun 18 09:07:35.328 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:35.328 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:35.328 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:36.051 [notice] Time to compute a consensus.
+Jun 18 09:07:36.052 [notice] Computed bandwidth weights for Case 2b1 (Wgg=weight_scale, Wmd=Wgd) with v10: G=1 M=1 E=1 D=1 T=4
+Jun 18 09:07:36.055 [notice] Bandwidth-weight Case 1 is verified and valid.
+Jun 18 09:07:36.055 [notice] Computed bandwidth weights for Case 2b1 (Wgg=weight_scale, Wmd=Wgd) with v10: G=1 M=1 E=1 D=1 T=4
+Jun 18 09:07:36.058 [notice] Bandwidth-weight Case 1 is verified and valid.
+Jun 18 09:07:36.058 [notice] Consensus computed; uploading signature(s)
+Jun 18 09:07:36.059 [notice] Signature(s) posted.
+Jun 18 09:07:36.059 [notice] Uploaded signature(s) to dirserver 127.0.0.1:7001
+Jun 18 09:07:36.072 [notice] Got a signature from 127.0.0.1. Adding it to the pending consensus.
+Jun 18 09:07:36.072 [notice] Added a signature for test001authority from 127.0.0.1.
+Jun 18 09:07:36.412 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:36.412 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:36.412 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:37.437 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:37.437 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:37.437 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:38.056 [notice] Time to fetch any signatures that we're missing.
+Jun 18 09:07:38.438 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:38.438 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:38.438 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:39.440 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:39.440 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:39.440 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:40.060 [notice] Time to publish the consensus and discard old votes
+Jun 18 09:07:40.062 [notice] Published ns consensus
+Jun 18 09:07:40.066 [notice] Published microdesc consensus
+Jun 18 09:07:40.442 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:40.442 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:40.442 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:41.449 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:41.449 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:41.449 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:42.458 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:42.458 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:42.458 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:43.459 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:43.459 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:43.459 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:44.460 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:44.460 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:44.460 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:45.465 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:45.465 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:45.465 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:46.496 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:46.496 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:46.496 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:47.502 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:47.502 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:47.502 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:48.509 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:48.509 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:48.509 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:49.519 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:49.519 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:49.519 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:50.526 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:50.526 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:50.526 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 09:07:51.564 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:51.564 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:51.564 [warn] Failed to find node for hop #2 of our path. Discarding this circuit.
+Jun 18 11:08:27.109 [warn] Your system clock just jumped 7235 seconds forward; assuming established circuits no longer work.
+Jun 18 11:08:27.109 [notice] Time to vote.
+Jun 18 11:08:27.109 [notice] Choosing valid-after time in vote as 2019-06-18 18:08:40: consensus_set=0, last_interval=20
+Jun 18 11:08:27.112 [warn] Rejecting vote from 127.0.0.1 with valid-after time of 2019-06-18 18:08:40; we were expecting 2019-06-18 16:08:00
+Jun 18 11:08:27.112 [warn] Couldn't store my own vote! (I told myself, 'Bad valid-after time'.)
+Jun 18 11:08:27.112 [notice] Time to fetch any votes that we're missing.
+Jun 18 11:08:27.112 [notice] We're missing votes from 2 authorities (12CAD985D805AE4FBA0CF10525B61D070F104890 B3E981F3D572F8B1D53F6FB807E66EC58C7276C1). Asking every other authority for a copy.
+Jun 18 11:08:27.112 [notice] Time to compute a consensus.
+Jun 18 11:08:27.113 [warn] We don't have enough votes to generate a consensus: 0 of 2
+Jun 18 11:08:27.113 [notice] Time to fetch any signatures that we're missing.
+Jun 18 11:08:27.113 [notice] Time to publish the consensus and discard old votes
+Jun 18 11:08:27.113 [warn] Not enough info to publish pending ns consensus
+Jun 18 11:08:27.113 [warn] Not enough info to publish pending microdesc consensus
+Jun 18 11:08:27.114 [warn] Received http status code 404 ("Not found") from server '127.0.0.1:7001' while fetching "/tor/status-vote/next/12CAD985D805AE4FBA0CF10525B61D070F104890+B3E981F3D572F8B1D53F6FB807E66EC58C7276C1.z".
+Jun 18 11:08:27.612 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 11:08:27.612 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 11:08:27.612 [warn] Failed to find node for hop #1 of our path. Discarding this circuit.
+Jun 18 11:08:27.612 [notice] Our circuit 0 (id: 112) died due to an invalid selected path, purpose General-purpose client. This may be a torrc configuration issue, or a bug. [110 similar message(s) suppressed in last 3600 seconds]
+Jun 18 11:08:28.613 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 11:08:28.613 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 11:08:28.613 [warn] Failed to find node for hop #1 of our path. Discarding this circuit.
+Jun 18 09:07:54.498 [warn] Your system clock just jumped 7234 seconds backward; assuming established circuits no longer work.
+Jun 18 09:07:55.500 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:55.500 [warn] No available nodes when trying to choose node. Failing.
+Jun 18 09:07:55.500 [warn] Failed to find node for hop #1 of our path. Discarding this circuit.
+Jun 18 09:07:55.503 [notice] Heartbeat: Tor's uptime is 0:02 hours, with 3 circuits open. I've sent 131 kB and received 110 kB.
+Jun 18 09:07:55.504 [notice] Average packaged cell fullness: 74.285%. TLS write overhead: 11%
+Jun 18 09:07:55.504 [notice] Circuit handshake stats since last time: 0/0 TAP, 12/12 NTor.
+Jun 18 09:07:55.504 [notice] Since startup we initiated 0 and received 0 v1 connections; initiated 0 and received 0 v2 connections; initiated 0 and received 0 v3 connections; initiated 0 and received 0 v4 connections; initiated 2 and received 3 v5 connections.
+Jun 18 09:07:55.504 [notice] DoS mitigation since startup: 0 circuits killed with too many cells. [cc not enabled] [conn not enabled]
+Jun 18 09:07:56.135 [notice] Interrupt: we have stopped accepting new connections, and will shut down in 2 seconds. Interrupt again to exit now.
+Jun 18 09:07:56.509 [notice] Delaying directory fetches: We are hibernating or shutting down.
+Jun 18 09:07:58.143 [notice] Clean shutdown finished. Exiting.

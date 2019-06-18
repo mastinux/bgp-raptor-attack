@@ -184,31 +184,68 @@ def main():
 	for i in xrange(NUM_ASES):
 		log("Starting web servers", 'yellow')
 		startWebserver(net, 'h%s-1' % (i+1), "Web server home page")
+
+	log2("BGP convergence", 10, "cyan")
 	
 	# setting ownership
 	os.system("chown -R root:root chutney/net/nodes/")
 
 	# configuring tor on hosts
 	hostname = "h5-3"
+	#print hostname, getIP(hostname)
 	host = net.getNodeByName(hostname)
 	host.popen("tor/src/app/tor -f chutney/net/nodes/000authority/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
+	log2(hostname, 1, "cyan")
+	#host.popen("netstat -lnp > ~/merda5-3 2>&1", shell=True)
+	host.popen("ps aux | grep tor > ~/merdissima5-3 2>&1", shell=True)
 
 	hostname = "h2-2"
+	#print hostname, getIP(hostname)
 	host = net.getNodeByName(hostname)
-	host.popen("tor/src/app/tor -f chutney/net/nodes/001guard/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
+	host.popen("tor/src/app/tor -f chutney/net/nodes/001authority/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
+	log2(hostname, 1, "cyan")
+	#host.popen("netstat -lnp > ~/merda2-2 2>&1", shell=True)
+	host.popen("ps aux | grep tor > ~/merdissima2-2 2>&1", shell=True)
 
 	hostname = "h6-2"
+	#print hostname, getIP(hostname)
 	host = net.getNodeByName(hostname)
 	host.popen("tor/src/app/tor -f chutney/net/nodes/002exit/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
+	log2(hostname, 1, "cyan")
+	#host.popen("netstat -lnp > ~/merda6-2 2>&1", shell=True)
+	host.popen("ps aux | grep tor > ~/merdissima6-2 2>&1", shell=True)
+	#log2("relays", 15, "cyan")
 
 	hostname = "h1-1"
+	#print hostname, getIP(hostname)
 	host = net.getNodeByName(hostname)
 	host.popen("tor/src/app/tor -f chutney/net/nodes/003client/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
+	log2(hostname, 1, "cyan")
+	#host.popen("netstat -lnp > ~/merda1-1 2>&1", shell=True)
+	host.popen("ps aux | grep tor > ~/merdissima1-1 2>&1", shell=True)
+	#log2("clients", 10, "cyan")
+
+	"""
+	hostname = "h6-2"
+	host = net.getNodeByName(hostname)
+	host.popen("netstat -lnp >> ~/merda6-2 2>&1", shell=True)
+	hostname = "h2-2"
+	host = net.getNodeByName(hostname)
+	host.popen("netstat -lnp >> ~/merda2-2 2>&1", shell=True)
+	hostname = "h5-3"
+	host = net.getNodeByName(hostname)
+	host.popen("netstat -lnp >> ~/merda5-3 2>&1", shell=True)
+	hostname = "h1-1"
+	host = net.getNodeByName(hostname)
+	host.popen("netstat -lnp >> ~/merda1-1 2>&1", shell=True)
+	"""
 
 	CLI(net)
 
-	host.popen("wget -O - 14.1.0.1", shell=True)
-	log2("h1-1 to perform wget on h4-1", 5, "cyan")
+	#host.popen("wget -O - 14.1.0.1", shell=True)
+	#log2("h1-1 to perform wget on h4-1", 5, "cyan")
+
+	#log2("a consensus containing relays to be generated", 210, "cyan")
 
 	net.stop()
 
@@ -218,6 +255,12 @@ def main():
 
 	# resetting ownership
 	os.system("chown -R mininet:mininet chutney/net/nodes/")
+
+    # opening capture files
+	fltr = '(ip.addr == 11.1.0.1) or (ip.addr == 12.2.0.1) or (ip.addr == 14.1.0.1) or (ip.addr == 15.3.0.1) or (ip.addr == 16.2.0.1)'
+	#os.system('sudo wireshark /tmp/R1-eth4.pcap -Y \'%s\' &' % fltr)
+	#os.system('sudo wireshark /tmp/R1-eth5.pcap -Y \'%s\' &' % fltr)
+
 
 if __name__ == "__main__":
 	main()

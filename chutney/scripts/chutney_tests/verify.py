@@ -62,17 +62,6 @@ def _verify_traffic(network):
     # now make the connections
     bind_to = (LISTEN_ADDR, LISTEN_PORT)
 
-    # mastinux
-    print ("_verify_traffic ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n")
-    print ("bind_to ", bind_to)
-    #print ("tmpdata\t%s" % tmpdata)
-    print ("TIMEOUT\t%s" % TIMEOUT)
-    print ("reps\t%s" % reps)
-    print ("dot_reps\t%s" % dot_reps)
-    print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-    #c = " ".join(cmdline)
-    #os.system("echo %s >> ~/tor-topology-commands.txt" % c)
-
     tt = chutney.Traffic.TrafficTester(bind_to, tmpdata, TIMEOUT, reps,
                                        dot_reps)
     # _env does not implement get() due to its fallback to parent behaviour

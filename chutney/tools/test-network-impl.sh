@@ -27,6 +27,8 @@ export CHUTNEY_STOP_TIME=${CHUTNEY_STOP_TIME:-0}
 CHUTNEY="$CHUTNEY_PATH/chutney"
 
 if [ "$CHUTNEY_START_TIME" -ge 0 ]; then
+    # mastinux
+
     $ECHO "Waiting $CHUTNEY_START_TIME seconds for a consensus containing relays to be generated..."
     # We log bootstrap status for debugging purposes.
     # We'll fix bootstrap errors in #20473.
