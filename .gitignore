@@ -5,3 +5,4 @@
 logs/*stdout
 
 chutney/net/nodes*
+nohup.out
