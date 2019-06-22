@@ -1,0 +1,13 @@
+$ xxd -p chutney/net/nodes/003client/control_auth_cookie > auth_cookie.txt
+
+---
+
+$ telnet localhost 8003
+
+PROTOCOLINFO
+
+AUTHENTICATE <auth_cookie>
+
+GETINFO circuit-status
+
+EXIT

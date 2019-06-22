@@ -2,7 +2,9 @@
 
 *.pyc
 
-logs/*stdout
+logs/*.log
 
 chutney/net/nodes*
 nohup.out
+z*
+torsocks-configuration.txt

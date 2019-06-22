@@ -126,7 +126,7 @@ def getGateway(hostname):
 def startWebserver(net, hostname, text="Default web server"):
 	host = net.getNodeByName(hostname)
 
-	text = text, "on", hostname
+	text = text + " on " + hostname
 
 	return host.popen("python webserver.py --text '%s' > /tmp/%s.log" % (text, hostname), shell=True)
 
@@ -139,6 +139,7 @@ def init_quagga_state_dir():
 
 	return
 
+
 def configure_routers(net):
 	# configuring reverse path filtering and ip frowarding
 	for router in net.switches:
@@ -150,21 +151,22 @@ def configure_routers(net):
 		router.cmd("sysctl -w net.ipv4.ip_forward=1")
 		router.waitOutput()
 
+		#"""
 		if router.name == "R1":
-			router.cmd("tcpdump -i R1-eth4 -w /tmp/R1-eth4.pcap not arp > /tmp/tcpdump-R1-eth4.out 2> /tmp/tcpdump-R1-eth4.err &", shell=True)
-			router.cmd("tcpdump -i R1-eth5 -w /tmp/R1-eth5.pcap not arp > /tmp/tcpdump-R1-eth5.out 2> /tmp/tcpdump-R1-eth5.err &", shell=True)
+			router.cmd("tcpdump -i R1-eth4 -w /tmp/R1-eth4.pcap not arp > /tmp/R1-eth4-tcpdump.out 2>&1 &", shell=True)
+			router.cmd("tcpdump -i R1-eth5 -w /tmp/R1-eth5.pcap not arp > /tmp/R1-eth5-tcpdump.out 2>&1 &", shell=True)
+		#"""
 
 	log2("sysctl changes to take effect", args.sleep, "cyan")
 
 	# launching zebra and quagga daemons
+	log("Starting zebra and bgpd daemons")
 	for router in net.switches:
-		router.cmd("~/quagga-1.2.4/zebra/zebra -f conf/zebra-%s.conf -d -i /tmp/zebra-%s.pid > logs/%s-zebra-stdout 2>&1" % (router.name, router.name, router.name))
+		router.cmd("~/quagga-1.2.4/zebra/zebra -f conf/zebra-%s.conf -d -i /tmp/zebra-%s.pid > logs/%s-zebra.log 2>&1" % (router.name, router.name, router.name))
 		router.waitOutput()
 
-		router.cmd("~/quagga-1.2.4/bgpd/bgpd -f conf/bgpd-%s.conf -d -i /tmp/bgp-%s.pid > logs/%s-bgpd-stdout 2>&1" % (router.name, router.name, router.name), shell=True)
+		router.cmd("~/quagga-1.2.4/bgpd/bgpd -f conf/bgpd-%s.conf -d -i /tmp/bgp-%s.pid > logs/%s-bgpd.log 2>&1" % (router.name, router.name, router.name), shell=True)
 		router.waitOutput()
-
-		log("Starting zebra and bgpd on %s" % router.name)
 
 
 def configure_hosts(net):
@@ -174,41 +176,59 @@ def configure_hosts(net):
 		host.cmd("route add default gw %s" % (getGateway(host.name)))
 
 	# starting web servers
+	log("Starting web servers", 'yellow')
 	for i in xrange(NUM_ASES):
-		log("Starting web servers", 'yellow')
 		startWebserver(net, 'h%s-1' % (i+1), "Web server home page")
 
 
-def configure_tor(net):
-	# configuring tor on hosts
+def start_tor(net):
+	# starting tor on hosts
 	hostname = "h5-3"
 	host = net.getNodeByName(hostname)
-	host.popen("tor/src/app/tor -f chutney/net/nodes/000authority/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
+	host.popen("tor/src/app/tor -f chutney/net/nodes/000authority/torrc > /tmp/%s-tor.log 2>&1 &" % hostname, shell=True)
 
 	hostname = "h2-2"
 	host = net.getNodeByName(hostname)
-	host.popen("tor/src/app/tor -f chutney/net/nodes/001authority/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
+	host.popen("tor/src/app/tor -f chutney/net/nodes/001authority/torrc > /tmp/%s-tor.log 2>&1 &" % hostname, shell=True)
 
 	hostname = "h6-2"
 	host = net.getNodeByName(hostname)
-	host.popen("tor/src/app/tor -f chutney/net/nodes/002exit/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
+	host.popen("tor/src/app/tor -f chutney/net/nodes/002exit/torrc > /tmp/%s-tor.log 2>&1 &" % hostname, shell=True)
 
 	hostname = "h1-1"
 	host = net.getNodeByName(hostname)
-	host.popen("tor/src/app/tor -f chutney/net/nodes/003client/torrc > /tmp/tor-%s.log 2>&1 &" % hostname, shell=True)
+	host.popen("tor/src/app/tor -f chutney/net/nodes/003client/torrc > /tmp/%s-tor.log 2>&1 &" % hostname, shell=True)
 
 
 def main():
-	os.system("rm -f /tmp/R*.log /tmp/h*.log /tmp/*R*.pid logs/*stdout")
+	# preparing torrc
+	#os.system("cd chutney; MASTINUX_CONFIG=1 ./tools/test-network.sh --flavor basic-min-raptor; cd ..")
+	"""
+	# TODO
+	# da configurare solo nel client non nei server
+	os.system("sudo bash -c \"echo \"ReachableAddresses \*:\*\" >> chutney/net/nodes/003*/torrc\"")
+	"""
+
+	# generate file in ./server launching
+	# $ perl -e 'print "0101010101010101010101010" x 4 x 1024 x 1024' > file.txt
+
+	#sys.exit(0)
+
+	# clearing tor logs
+	#os.system("rm chutney/net/nodes/*/notice.log")
+	#os.system("rm chutney/net/nodes/*/info.log")
+
+	os.system("rm -f /tmp/c*.log /tmp/h*.log /tmp/R*.log")
+	os.system("rm -f z*")
+	os.system("rm -f /tmp/bgp-R*.pid /tmp/zebra-R*.pid")
 	os.system("mn -c >/dev/null 2>&1")
-	os.system("killall -9 zebra bgpd > /dev/null 2>&1")
-	os.system('pgrep torrc | xargs kill -9')
 	os.system('pgrep zebra | xargs kill -9')
 	os.system('pgrep bgpd | xargs kill -9')
 	os.system('pgrep -f torrc | xargs kill -9')
 	os.system('pgrep -f webserver.py | xargs kill -9')
+	#os.system("./clear.sh")
 
-	os.system('reset')
+	#sys.exit(0)
 
 	init_quagga_state_dir()
 
@@ -216,38 +236,46 @@ def main():
 	net.start()
 
 	configure_routers(net)
-
 	configure_hosts(net)
-
 	log2("BGP convergence", 10, "cyan")
 
+	#"""
 	# tcpdump on webserver h4-1
 	hostname = "h4-1"
 	host = net.getNodeByName(hostname)
-	host.popen("tcpdump -i h4-1-eth1 -w /tmp/h4-1-eth1.pcap not arp > /tmp/tcpdump-h4-1-eth1.out 2> /tmp/tcpdump-h4-1-eth1.err &", shell=True)
+	host.popen("tcpdump -i h4-1-eth0 -w /tmp/h4-1-eth0.pcap not arp > /tmp/h4-1-tcpdump.log 2>&1 &", shell=True)
+	#"""
 	
 	# setting ownership
 	os.system("chown -R root:root chutney/net/nodes/")
 
-	configure_tor(net)
-	log2("Tor topology convergence", 60, "cyan")
+	start_tor(net)
+	log2("Tor convergence", 60, "cyan")
 
 	# configuring torsocks
-	os.system("sudo rm index.html")
-	os.system("sudo cp /etc/torsocks.conf chutney/net/nodes/003client/")
-	os.system("sudo sed -i \"s\server_port = 9050\server_port = 9003\g\" chutney/net/nodes/003client/torsocks.conf")
-	log2("torsocks", 3, "cyan")
+	os.system("sudo cp /etc/torsocks.conf chutney/net/nodes/003client/ >> torsocks-configuration.txt 2>&1")
+	os.system("sudo sed -i \"s\server_port = 9050\server_port = 9003\g\" chutney/net/nodes/003client/torsocks.conf >> torsocks-configuration.txt 2>&1")
+	
+	"""
+	# wget
+	hostname = "h1-1"
+	host = net.getNodeByName(hostname)
+	host.popen("wget 14.1.0.1 -O z.html -o z.log > z.out.err 2>&1", shell=True)
+	log2("h1-1 to perform wget against h4-1", 10, "cyan")
+	#"""
 
-	# launghing torsocks wget
+	#"""
+	# torsocks wget
 	hostname = "h1-1"
 	host = net.getNodeByName(hostname)
 	path = os.getcwd() + "/chutney/net/nodes/003client/torsocks.conf"
 	parameter = "TORSOCKS_CONF_FILE=" + path
-	host.popen("%s torsocks wget 14.1.0.1" % parameter, shell=True)
-	log2("h1-1 to perform torsocks wget against h4-1", 5, "cyan")
+	host.popen("%s torsocks wget 14.1.0.1 -O z.html -o z.log > z.out.err 2>&1" % parameter, shell=True)
+	log2("h1-1 to perform torsocks wget against h4-1", 10, "cyan")
+	#"""
 
 	#CLI(net)
-	#net.stop()
+	net.stop()
 
 	os.system('pgrep zebra | xargs kill -9')
 	os.system('pgrep bgpd | xargs kill -9')
@@ -258,12 +286,9 @@ def main():
 	os.system("chown -R mininet:mininet chutney/net/nodes/")
 
     # opening capture files
-	fltr = '(ip.addr == 11.1.0.1) or (ip.addr == 12.2.0.1) or (ip.addr == 14.1.0.1) or (ip.addr == 15.3.0.1) or (ip.addr == 16.2.0.1)'
-	os.system('sudo wireshark /tmp/R1-eth4.pcap -Y \'%s\' &' % fltr)
-	os.system('sudo wireshark /tmp/R1-eth5.pcap -Y \'%s\' &' % fltr)
-	#os.system("gedit ~/merda.log")
-	#os.system("gedit ~/merdaccia ~/merdaccia.html")
-	#os.system("gedit ~/merdone")
+	#fltr = '(ip.addr == 11.1.0.1) or (ip.addr == 12.2.0.1) or (ip.addr == 14.1.0.1) or (ip.addr == 15.3.0.1) or (ip.addr == 16.2.0.1)'
+	#os.system('sudo wireshark /tmp/R1-eth4.pcap -Y \'%s\' &' % fltr)
+	#os.system('sudo wireshark /tmp/R1-eth5.pcap -Y \'%s\' &' % fltr)
 
 
 if __name__ == "__main__":
