@@ -551,7 +551,7 @@ class LocalNodeBuilder(NodeBuilder):
             #print (self._getTorrcFname())
             if self._env['orport'] == 5000:
                 #print("converting authority °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°")
-                self._env['ip'] = '15.3.0.1'
+                self._env['ip'] = '12.3.0.1'
 
             if self._env['orport'] == 5001:
                 #print("converting authority °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°")

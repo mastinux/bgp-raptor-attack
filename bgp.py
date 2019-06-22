@@ -153,8 +153,14 @@ def configure_routers(net):
 
 		#"""
 		if router.name == "R1":
-			router.cmd("tcpdump -i R1-eth4 -w /tmp/R1-eth4.pcap not arp > /tmp/R1-eth4-tcpdump.out 2>&1 &", shell=True)
-			router.cmd("tcpdump -i R1-eth5 -w /tmp/R1-eth5.pcap not arp > /tmp/R1-eth5-tcpdump.out 2>&1 &", shell=True)
+			router.cmd("tcpdump -i R1-eth4 -w /tmp/R1-eth4.pcap not arp > /tmp/R1-eth4-tcpdump.log 2>&1 &", shell=True)
+			router.cmd("tcpdump -i R1-eth5 -w /tmp/R1-eth5.pcap not arp > /tmp/R1-eth5-tcpdump.log 2>&1 &", shell=True)
+		#"""
+
+		#"""
+		if router.name == "R6":
+			router.cmd("tcpdump -i R6-eth4 -w /tmp/R6-eth4.pcap not arp > /tmp/R6-eth4-tcpdump.log 2>&1 &", shell=True)
+			router.cmd("tcpdump -i R6-eth5 -w /tmp/R6-eth5.pcap not arp > /tmp/R6-eth5-tcpdump.log 2>&1 &", shell=True)
 		#"""
 
 	log2("sysctl changes to take effect", args.sleep, "cyan")
@@ -183,7 +189,7 @@ def configure_hosts(net):
 
 def start_tor(net):
 	# starting tor on hosts
-	hostname = "h5-3"
+	hostname = "h2-3"
 	host = net.getNodeByName(hostname)
 	host.popen("tor/src/app/tor -f chutney/net/nodes/000authority/torrc > /tmp/%s-tor.log 2>&1 &" % hostname, shell=True)
 
@@ -202,33 +208,26 @@ def start_tor(net):
 
 def main():
 	# preparing torrc
-	#os.system("cd chutney; MASTINUX_CONFIG=1 ./tools/test-network.sh --flavor basic-min-raptor; cd ..")
-	"""
-	# TODO
-	# da configurare solo nel client non nei server
-	os.system("sudo bash -c \"echo \"ReachableAddresses \*:\*\" >> chutney/net/nodes/003*/torrc\"")
-	"""
-
-	# generate file in ./server launching
-	# $ perl -e 'print "0101010101010101010101010" x 4 x 1024 x 1024' > file.txt
-
-	#sys.exit(0)
+	# MASTINUX_CONFIG=1 ./tools/test-network.sh --flavor basic-min-raptor
+	
+	# generate file in ./webserver launching
+	os.system("perl -e 'print \"0101010101010101010101010\" x 4 x 1024 x 1024' > webserver/file.txt")
 
 	# clearing tor logs
 	#os.system("rm chutney/net/nodes/*/notice.log")
 	#os.system("rm chutney/net/nodes/*/info.log")
 
 	os.system("rm -f /tmp/c*.log /tmp/h*.log /tmp/R*.log")
-	os.system("rm -f z*")
 	os.system("rm -f /tmp/bgp-R*.pid /tmp/zebra-R*.pid")
+	os.system("rm -f /tmp/h*.pcap /tmp/R*.pcap")
+	os.system("rm -f z* logs/R*.log")
+
 	os.system("mn -c >/dev/null 2>&1")
+
 	os.system('pgrep zebra | xargs kill -9')
 	os.system('pgrep bgpd | xargs kill -9')
 	os.system('pgrep -f torrc | xargs kill -9')
 	os.system('pgrep -f webserver.py | xargs kill -9')
-	#os.system("./clear.sh")
-
-	#sys.exit(0)
 
 	init_quagga_state_dir()
 
@@ -255,26 +254,34 @@ def main():
 	# configuring torsocks
 	os.system("sudo cp /etc/torsocks.conf chutney/net/nodes/003client/ >> torsocks-configuration.txt 2>&1")
 	os.system("sudo sed -i \"s\server_port = 9050\server_port = 9003\g\" chutney/net/nodes/003client/torsocks.conf >> torsocks-configuration.txt 2>&1")
+
+	choice = 4
+
+	while choice != 0:
 	
-	"""
-	# wget
-	hostname = "h1-1"
-	host = net.getNodeByName(hostname)
-	host.popen("wget 14.1.0.1 -O z.html -o z.log > z.out.err 2>&1", shell=True)
-	log2("h1-1 to perform wget against h4-1", 10, "cyan")
-	#"""
+		if choice == 1:
+			#"""
+			# wget
+			hostname = "h1-1"
+			host = net.getNodeByName(hostname)
+			host.popen("wget 14.1.0.1 -O z.html -o z.log > z.out.err 2>&1", shell=True)
+			log2("h1-1 to perform wget against h4-1", 10, "cyan")
+			#"""
+		elif choice == 2:
+			#"""
+			# torsocks wget
+			hostname = "h1-1"
+			host = net.getNodeByName(hostname)
+			path = os.getcwd() + "/chutney/net/nodes/003client/torsocks.conf"
+			parameter = "TORSOCKS_CONF_FILE=" + path
+			host.popen("%s torsocks wget 14.1.0.1 -O z.html -o z.log > z.out.err 2>&1" % parameter, shell=True)
+			log2("h1-1 to perform torsocks wget against h4-1", 10, "cyan")
+			#"""
+		elif choice == 3:
+			CLI(net)
 
-	#"""
-	# torsocks wget
-	hostname = "h1-1"
-	host = net.getNodeByName(hostname)
-	path = os.getcwd() + "/chutney/net/nodes/003client/torsocks.conf"
-	parameter = "TORSOCKS_CONF_FILE=" + path
-	host.popen("%s torsocks wget 14.1.0.1 -O z.html -o z.log > z.out.err 2>&1" % parameter, shell=True)
-	log2("h1-1 to perform torsocks wget against h4-1", 10, "cyan")
-	#"""
+		choice = int(input("1 - wget\n2 - wget over torsocks\n3 - mininet CLI\n0 - exit\n"))
 
-	#CLI(net)
 	net.stop()
 
 	os.system('pgrep zebra | xargs kill -9')
