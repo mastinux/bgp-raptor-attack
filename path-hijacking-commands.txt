@@ -1,0 +1,100 @@
+./connect-zebra.sh R3
+
+configure terminal
+ip route 12.2.0.0/24 6.0.0.1
+ip route 12.3.0.0/24 6.0.0.1
+ip route 14.1.0.0/24 12.0.0.2
+exit
+
+--------------------------------------------------------------------------------
+./connect-bgp.sh R3
+
+configure terminal
+router bgp 3
+  network 12.2.0.0/24
+  network 12.3.0.0/24
+  network 14.1.0.0/24
+  neighbor 6.0.0.1 route-map evil-route-map-12-2 out
+  neighbor 6.0.0.1 route-map evil-route-map-12-3 out
+  neighbor 12.0.0.2 route-map evil-route-map-14 out
+  exit
+!
+ip prefix-list evil-prefix-list-12-2 permit 12.2.0.0/24
+ip prefix-list evil-prefix-list-12-3 permit 12.3.0.0/24
+ip prefix-list evil-prefix-list-14 permit 14.1.0.0/24
+!
+route-map evil-route-map-12-2 permit 10
+   match ip address prefix-list evil-prefix-list-12-2
+   set as-path prepend 2
+route-map evil-route-map-12-2 permit 20
+   exit
+!
+route-map evil-route-map-12-3 permit 10
+   match ip address prefix-list evil-prefix-list-12-3
+   set as-path prepend 2
+route-map evil-route-map-12-3 permit 20
+   exit
+!
+route-map evil-route-map-14 permit 10
+   match ip address prefix-list evil-prefix-list-14
+   set as-path prepend 4
+route-map evil-route-map-14 permit 20
+   exit
+exit
+
+--------------------------------------------------------------------------------
+|								RESULTS										   |
+--------------------------------------------------------------------------------
+
+bgpd-R1# show ip bgp 12.2.0.1
+
+BGP routing table entry for 12.2.0.0/24
+Paths: (2 available, best #2, table Default-IP-Routing-Table)
+  Advertised to non peer-group peers:
+  2.0.0.2
+  2 5 3
+    2.0.0.2 from 2.0.0.2 (2.2.2.2)
+      Origin IGP, localpref 100, valid, external
+      Last update: Sat Jun 22 11:36:40 2019
+
+  5 3
+    5.0.0.2 from 5.0.0.2 (5.5.5.5)
+      Origin IGP, localpref 100, valid, external, best
+      Last update: Sat Jun 22 11:36:37 2019
+
+--------------------------------------------------------------------------------
+
+bgpd-R1# show ip bgp 12.3.0.1
+
+BGP routing table entry for 12.3.0.0/24
+Paths: (2 available, best #2, table Default-IP-Routing-Table)
+  Advertised to non peer-group peers:
+  2.0.0.2
+  2 5 3
+    2.0.0.2 from 2.0.0.2 (2.2.2.2)
+      Origin IGP, localpref 100, valid, external
+      Last update: Sat Jun 22 11:36:40 2019
+
+  5 3
+    5.0.0.2 from 5.0.0.2 (5.5.5.5)
+      Origin IGP, localpref 100, valid, external, best
+      Last update: Sat Jun 22 11:36:37 2019
+
+--------------------------------------------------------------------------------
+
+bgpd-R6# show ip bgp 14.1.0.1
+
+BGP routing table entry for 14.1.0.0/24
+Paths: (2 available, best #2, table Default-IP-Routing-Table)
+  Advertised to non peer-group peers:
+  24.0.0.1
+  4 5 3
+    24.0.0.1 from 24.0.0.1 (4.4.4.4)
+      Origin IGP, localpref 100, valid, external
+      Last update: Sat Jun 22 11:36:41 2019
+
+  5 3
+    30.0.0.1 from 30.0.0.1 (5.5.5.5)
+      Origin IGP, localpref 100, valid, external, best
+      Last update: Sat Jun 22 11:36:38 2019
+

@@ -158,6 +158,11 @@ def configure_routers(net):
 		#"""
 
 		#"""
+		if router.name == "R3":
+			router.cmd("tcpdump -i R3-eth6 -w /tmp/R3-eth6.pcap not arp > /tmp/R3-eth6-tcpdump.log 2>&1 &", shell=True)
+		#"""
+
+		#"""
 		if router.name == "R6":
 			router.cmd("tcpdump -i R6-eth4 -w /tmp/R6-eth4.pcap not arp > /tmp/R6-eth4-tcpdump.log 2>&1 &", shell=True)
 			router.cmd("tcpdump -i R6-eth5 -w /tmp/R6-eth5.pcap not arp > /tmp/R6-eth5-tcpdump.log 2>&1 &", shell=True)
@@ -280,7 +285,7 @@ def main():
 		elif choice == 3:
 			CLI(net)
 
-		choice = int(input("1 - wget\n2 - wget over torsocks\n3 - mininet CLI\n0 - exit\n"))
+		choice = int(input("1 - wget\n2 - wget over torsocks\n3 - mininet CLI\n0 - exit\n> "))
 
 	net.stop()
 
