@@ -42,14 +42,16 @@ Scaricare quagga-1.2.4 from [http://download.savannah.gnu.org/releases/quagga/](
 
 ## Esecuzione dell'attacco
 
-*. Avviare l'ambiente di simulazione*
+![topology](./stuff/bgp_raptor_attack_topology.png)
+
+**. Avviare l'ambiente di simulazione**
 
 Eseguo lo script per avviare le istanze degli AS e degli host.
 
 `# python bgp.py`
 
 
-*. Controllare il percorso del traffico destinato al guard relay*
+**. Controllare il percorso del traffico destinato al guard relay**
 
 In un altro terminale avvio una sessione con il daemon `bgpd` dell'AS1.
 La password di accesso è `en`.
@@ -80,7 +82,7 @@ L'output sarà simile al seguente.
 Posso osservare che AS1 inoltra il traffico direttamente verso l'AS2.
 Specularmente, R6 inoltra il traffico proveniente dall'exit relay E e destinato al server S direttamente verso l'AS4.
 
-*. Lanciare il Man-in-the-middle attack*
+**. Lanciare il Man-in-the-middle attack**
 
 In un altro terminale avvio una sessione con il daemon `bgpd` dell'AS3.
 La password di accesso è `en`.
@@ -133,7 +135,7 @@ Impongo le rotte statiche per instradare il traffico destinato ai prefissi IP so
 	R3(config)# ip route 14.1.0.0/24 12.0.0.2
 	R3(config)# exit
 
-*. Ricontrollare il percorso del traffico destinato al guard relay*
+**. Ricontrollare il percorso del traffico destinato al guard relay**
 
 Nel terminale con il daemon `bgpd` dell'AS1 rilancio l'ultimo comando.
 L'output sarà simile al seguente.
@@ -155,7 +157,7 @@ L'output sarà simile al seguente.
 Posso osservare che durante l'attacco AS1 inoltra il traffico secondo l'AS_PATH AS5, AS3.
 Specularmente, R6 inoltra il traffico secondo l'AS_PATH AS5, AS3.
 
-*. Monitorare il traffico*
+**. Monitorare il traffico**
 
 In altri due terminali separati lancio i seguenti comandi:
 
@@ -163,7 +165,7 @@ In altri due terminali separati lancio i seguenti comandi:
 
 `./R3-tcpdump-eth5.sh`
 
-*. Generare il traffico di prova*
+**. Generare il traffico di prova**
 
 Dal menu di scelta proposto dallo script lanciato al primo passo, scelgo la seconda opzione (`2 - wget over torsocks`).
 Lo script lancia sul client C `torsocks` che fa da wrapper a `wget` in modo che recuperi l'home page esposta dal server S tramite la rete Tor.
