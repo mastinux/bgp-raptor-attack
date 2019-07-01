@@ -213,10 +213,10 @@ def start_tor(net):
 
 def main():
 	# preparing torrc
-	# MASTINUX_CONFIG=1 ./tools/test-network.sh --flavor basic-min-raptor
+	#MASTINUX_CONFIG=1 ./tools/test-network.sh --flavor basic-min-raptor
 	
 	# generate file in ./webserver launching
-	os.system("perl -e 'print \"0101010101010101010101010\" x 4 x 1024 x 1024' > webserver/file.txt")
+	#os.system("perl -e 'print \"0101010101010101010101010\" x 4 x 1024 x 1024' > webserver/file.txt")
 
 	# clearing tor logs
 	#os.system("rm chutney/net/nodes/*/notice.log")
